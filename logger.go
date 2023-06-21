@@ -23,13 +23,10 @@ func SetLogger(logger *zap.SugaredLogger) {
 // debug is set as default level in case if LOG_LVL is not set
 func setEnvLogLvl() {
 	lvl := "debug"
+	_ = SetLogLvl(lvl)
 
 	if logEnv, ok := os.LookupEnv("LOG_LVL"); ok {
-		if err := SetLogLvl(logEnv); err != nil {
-			_ = SetLogLvl(lvl)
-		}
-	} else {
-		_ = SetLogLvl(lvl)
+		_ = SetLogLvl(logEnv)
 	}
 }
 
@@ -40,6 +37,7 @@ func SetLogLvl(lvl string) error {
 
 	if err != nil {
 		Error("failed to set log level as "+lvl, "reason", err.Error())
+		Warn("log level is set as ", defaultLvl.String())
 	} else {
 		Debug("log level was successfully set as " + lvl)
 	}
