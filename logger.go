@@ -10,7 +10,7 @@ var log *zap.SugaredLogger
 var defaultLvl zap.AtomicLevel
 
 func init() {
-	getEnvLogLvl()
+	setEnvLogLvl()
 	SetLogger(New())
 }
 
@@ -21,7 +21,7 @@ func SetLogger(logger *zap.SugaredLogger) {
 
 // getEnvLogLvl searches a log level in an environment variable LOG_LVL and sets it as default.
 // debug is set as default level in case if LOG_LVL is not set
-func getEnvLogLvl() {
+func setEnvLogLvl() {
 	lvl := "debug"
 
 	if logEnv, ok := os.LookupEnv("LOG_LVL"); ok {
