@@ -1,4 +1,4 @@
-module github.com/dKariakin/logger
+module github.com/dKariakin/app_tracker_platform
 
 go 1.20
 
