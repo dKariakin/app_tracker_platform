@@ -7,7 +7,7 @@ import (
 )
 
 var log *zap.SugaredLogger
-var defaultLvl = zap.NewAtomicLevelAt(zap.DebugLevel)
+var defaultLvl zap.AtomicLevel
 
 func init() {
 	setEnvLogLvl()
