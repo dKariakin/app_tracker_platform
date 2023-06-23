@@ -10,8 +10,8 @@ var log *zap.SugaredLogger
 var defaultLvl zap.AtomicLevel
 
 func init() {
-	setEnvLogLvl()
 	SetLogger(New())
+	setEnvLogLvl()
 }
 
 // SetLogger replaces a default logger created on the start of the application with a provided logger
